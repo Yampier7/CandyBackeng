@@ -10,26 +10,21 @@ public class User {
     private Long id;
     @Column(name="title", length = 60, nullable = false)
     private String title;
-    @Column(name="dni")
-    private Long dni;
+    @Column(name="apellido")
+    private String apellido;
     @Column(name="correo", length = 60, nullable = false)
     private String correo;
     @Column(name="contrasenia", length = 60, nullable = false)
     private String contrasenia;
 
-    @OneToOne
-    @JoinColumn(name = "detail_id", nullable = false)
-    private Detail detail;
-
     public User() {
     }
 
-    public User(String title, Long dni, String correo, String contrasenia, Detail detail) {
+    public User(String title, String apellido, String correo, String contrasenia) {
         this.title = title;
-        this.dni = dni;
+        this.apellido = apellido;
         this.correo = correo;
         this.contrasenia = contrasenia;
-        this.detail = detail;
     }
 
     public Long getId() {
@@ -48,12 +43,12 @@ public class User {
         this.title = title;
     }
 
-    public Long getDni() {
-        return dni;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setDni(Long dni) {
-        this.dni = dni;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreo() {
@@ -70,13 +65,5 @@ public class User {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
-    }
-
-    public Detail getDetail() {
-        return detail;
-    }
-
-    public void setDetail(Detail detail) {
-        this.detail = detail;
     }
 }

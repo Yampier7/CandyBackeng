@@ -1,5 +1,7 @@
 package pe.upc.edu.upcprecandy.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,32 +10,27 @@ public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="title")
+    private String title;
+    @Column(name = "precio")
+    private Long precio;
     @Column(name="url")
     private String url;
-    @Column(name="title", length = 60, nullable = false)
-    private String title;
-    @Column(name="precio")
-    private Number precio;
-    @Column(name="cantidad")
-    private Number cantidad;
-
-    @OneToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
-
-    @OneToOne
-    @JoinColumn(name = "pay_id",nullable = false)
-    private Pay pay;
+    @Column(name="pais")
+    private String pais;
+    @Column(name="categoria")
+    private String categoria;
 
     public Detail() {
     }
 
-
-    public Detail(String url, String title, Number precio, Number cantidad) {
-        this.url = url;
+    public Detail(String title, Long precio, String url, String pais, String categoria) {
         this.title = title;
         this.precio = precio;
-        this.cantidad = cantidad;
+        this.url = url;
+        this.pais = pais;
+        this.categoria = categoria;
     }
 
     public Long getId() {
@@ -44,14 +41,6 @@ public class Detail {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -60,35 +49,35 @@ public class Detail {
         this.title = title;
     }
 
-    public Number getPrecio() {
+    public Long getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Number precio) {
+    public void setPrecio(Long precio) {
         this.precio = precio;
     }
 
-    public Number getCantidad() {
-        return cantidad;
+    public String getUrl() {
+        return url;
     }
 
-    public void setCantidad(Number cantidad) {
-        this.cantidad = cantidad;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getPais() {
+        return pais;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
-    public Pay getPay() {
-        return pay;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setPay(Pay pay) {
-        this.pay = pay;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

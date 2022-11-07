@@ -17,7 +17,7 @@ public class Product {
     private Number precio;
     @Column(name="categoria", length = 60, nullable = false)
     private String categoria;
-    @Column(name="Url")
+    @Column(name="url")
     private String url;
 
     public Product() {

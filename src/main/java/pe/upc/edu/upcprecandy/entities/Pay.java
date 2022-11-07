@@ -13,20 +13,20 @@ public class Pay {
     @Column(name="direccion", length = 60, nullable = false)
     private String direccion;
     @Column(name="nTarjeta")
-    private Long NTarjeta;
+    private Number NTarjeta;
     @Column(name="fecha", length = 60, nullable = false)
     private String fecha;
     @Column(name="cid")
-    private Long cid;
+    private Number cid;
     @Column(name="postal")
-    private Long postal;
+    private Number postal;
 
 
 
     public Pay() {
     }
 
-    public Pay(String direccion, Long NTarjeta, String fecha, Long cid, Long postal, Detail detail) {
+    public Pay(String direccion, Number NTarjeta, String fecha, Number cid, Number postal) {
         this.direccion = direccion;
         this.NTarjeta = NTarjeta;
         this.fecha = fecha;
@@ -50,11 +50,11 @@ public class Pay {
         this.direccion = direccion;
     }
 
-    public Long getNTarjeta() {
+    public Number getNTarjeta() {
         return NTarjeta;
     }
 
-    public void setNTarjeta(Long NTarjeta) {
+    public void setNTarjeta(Number NTarjeta) {
         this.NTarjeta = NTarjeta;
     }
 
@@ -66,19 +66,19 @@ public class Pay {
         this.fecha = fecha;
     }
 
-    public Long getCid() {
+    public Number getCid() {
         return cid;
     }
 
-    public void setCid(Long cid) {
+    public void setCid(Number cid) {
         this.cid = cid;
     }
 
-    public Long getPostal() {
+    public Number getPostal() {
         return postal;
     }
 
-    public void setPostal(Long postal) {
+    public void setPostal(Number postal) {
         this.postal = postal;
     }
 

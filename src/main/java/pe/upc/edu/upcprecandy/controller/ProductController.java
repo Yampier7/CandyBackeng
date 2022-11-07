@@ -4,19 +4,21 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import pe.upc.edu.upcprecandy.entities.Product;
 import pe.upc.edu.upcprecandy.repository.ProductRepository;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController // anotacion
 @RequestMapping("/api")
 public class ProductController {
     //get posh-> registar put-> actualizar delete
     @Autowired
     private ProductRepository productRepository;
+    @Transactional(readOnly = true)
     @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts(){
         List<Product> products=productRepository.findAll();

@@ -4,6 +4,7 @@ package pe.upc.edu.upcprecandy.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class OrderController {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Transactional(readOnly = true)
     @GetMapping("/users/{userId}/orders")
     public ResponseEntity<List<Order>> getOrderbyUser(@PathVariable("userId") Long userId){
         if(userRepository.existsById(userId)){
