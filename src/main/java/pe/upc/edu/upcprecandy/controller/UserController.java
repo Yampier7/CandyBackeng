@@ -33,30 +33,31 @@ public class UserController {
         return new ResponseEntity<User>(newUser,HttpStatus.CREATED);
     }
 
-    /*@GetMapping("/users/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserId(@PathVariable("id")Long id){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("no existe usuario con esta id=" + id));
         return new ResponseEntity<User>(user, HttpStatus.OK);
-    }*/
+    }
 
-    @GetMapping("/users/{id}")
+   /* @GetMapping("/users/{id}")
     public ResponseEntity<List<User>> getUserId(@PathVariable("id")Long id){
         if(!userRepository.existsById(id)){
-            throw new ResourceNotFoundException("no existe usuario con esta id:"+id);
+            throw new ResourceNotFoundException("null:"+id);
         }
         List<User> users=userRepository.findByUserJPQL(id);
 
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-    }
+    }*/
 
     @PutMapping("/users/{id}")
     public ResponseEntity<User> updateUserById(@PathVariable("id")Long id,
                                                @RequestBody User user){
         User userup=userRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("no existe usuario con esta id:"+id));
+                .orElseThrow(()->new ResourceNotFoundException("null:"+id));
         userup.setTitle(user.getTitle());
         userup.setApellido(user.getApellido());
+        userup.setCorreo(user.getCorreo());
         userup.setContrasenia(user.getContrasenia());
         return new ResponseEntity<User>(userRepository.save(userup), HttpStatus.OK);
     }
